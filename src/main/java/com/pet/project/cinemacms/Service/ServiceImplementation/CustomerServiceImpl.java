@@ -1,7 +1,8 @@
-package com.pet.project.cinemacms.Service;
+package com.pet.project.cinemacms.Service.ServiceImplementation;
 
 import com.pet.project.cinemacms.Models.Customer;
 import com.pet.project.cinemacms.Repository.CustomerRepository;
+import com.pet.project.cinemacms.Service.ServiceInterface.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

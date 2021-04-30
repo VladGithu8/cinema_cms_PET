@@ -10,7 +10,7 @@ public class Advertising {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (name="advertising_id")
-    private int id;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "about_c_id")

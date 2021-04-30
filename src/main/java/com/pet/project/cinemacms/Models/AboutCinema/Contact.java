@@ -9,7 +9,7 @@ public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (name="cinema_contacts_id")
-    private int id;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "about_c_id")

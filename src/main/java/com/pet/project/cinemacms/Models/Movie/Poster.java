@@ -10,7 +10,7 @@ public class Poster {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (name="poster_id")
-    private int id;
+    private Long id;
 
     @OneToMany(mappedBy = "posterMovie",
             targetEntity = Movie.class,

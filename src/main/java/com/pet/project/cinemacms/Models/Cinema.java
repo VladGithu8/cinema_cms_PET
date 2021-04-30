@@ -12,7 +12,7 @@ public class Cinema {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (name="cinema_id")
-    private int id;
+    private Long id;
 
     @OneToMany(mappedBy = "cinema",
             targetEntity = AboutCinema.class,

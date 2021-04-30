@@ -9,7 +9,7 @@ public class News {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (name="news_id")
-    private int id;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "about_c_id")
@@ -43,11 +43,11 @@ public class News {
         this.aboutCinemaNews = aboutCinemaNews;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -10,7 +10,7 @@ public class KidsGameRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (name="kids_room_id")
-    private int id;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "about_c_id")
@@ -35,11 +35,11 @@ public class KidsGameRoom {
         this.aboutCinemaKidsRoom = aboutCinemaId;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

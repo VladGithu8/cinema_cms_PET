@@ -12,7 +12,7 @@ public class AboutCinema {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (name="about_c_id")
-    private int id;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "cinema_id_about")

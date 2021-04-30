@@ -1,7 +1,7 @@
 package com.pet.project.cinemacms.Controller;
 
 import com.pet.project.cinemacms.Models.Customer;
-import com.pet.project.cinemacms.Service.CustomerService;
+import com.pet.project.cinemacms.Service.ServiceInterface.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

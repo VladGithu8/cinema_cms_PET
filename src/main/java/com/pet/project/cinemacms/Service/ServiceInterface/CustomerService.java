@@ -1,4 +1,4 @@
-package com.pet.project.cinemacms.Service;
+package com.pet.project.cinemacms.Service.ServiceInterface;
 
 import com.pet.project.cinemacms.Models.Customer;
 

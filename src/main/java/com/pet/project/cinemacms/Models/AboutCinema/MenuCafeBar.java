@@ -10,7 +10,7 @@ public class MenuCafeBar {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (name="menu_cafe_bar_id")
-    private int id;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "cafe_bar_id")

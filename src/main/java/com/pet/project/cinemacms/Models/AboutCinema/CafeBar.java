@@ -11,7 +11,7 @@ public class CafeBar {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (name="cafe_bar_id")
-    private int id;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "about_c_id")
@@ -48,11 +48,11 @@ public class CafeBar {
         this.aboutCinemaBar = aboutCinemaBar;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
