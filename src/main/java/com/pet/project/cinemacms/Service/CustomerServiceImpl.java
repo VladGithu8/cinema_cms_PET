@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -21,6 +22,23 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void saveCustomer(Customer customer) {
         this.customerRepository.save(customer);
+    }
+
+    @Override
+    public Customer getCustomerByID(Long id) {
+        Optional<Customer> customerOptional = customerRepository.findById(id);
+        Customer customer;
+        if(customerOptional.isPresent()){
+            customer = customerOptional.get();
+        } else {
+            throw new RuntimeException("Customer not found by id: " + id);
+        }
+        return customer;
+    }
+
+    @Override
+    public void deleteCustomerById(Long id) {
+        this.customerRepository.deleteById(id);
     }
 
 }

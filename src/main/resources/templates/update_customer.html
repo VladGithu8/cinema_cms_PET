@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>New Customer</title>
+    <title>Update Customer</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -19,6 +19,8 @@
     <h2> Save Customer </h2>
 
     <form action="#" th:action="@{/saveCustomer}" th:object="${customer}" method="POST">
+
+        <input type="hidden" th:field="*{id}"/>
 
         <input type="text" th:field="*{firstName}" placeholder="Customer first name"
                class="form-control mb-4 col-4">
@@ -37,13 +39,12 @@
         <input type="text" th:field="*{creditCard}" placeholder="Customer credit card"
                class="form-control mb-4 col-4">
 
-        <button type="submit" class="btn btn-outline-info"> Save</button>
+        <button type="submit" class="btn btn-outline-info"> Update</button>
     </form>
 
-  <hr>
-  <a th:href = "@{/}" class="badge badge-secondary"> <= Back to Customers list</a>
+    <hr>
+    <a th:href = "@{/}" class="badge badge-secondary"> <= Back to Customers list</a>
 
 </div>
-
 </body>
 </html>

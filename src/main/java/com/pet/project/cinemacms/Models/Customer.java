@@ -14,21 +14,13 @@ import javax.persistence.*;
 public class Customer {
 
     @Id
-    @SequenceGenerator(
-            name = "customer_sequence",
-            sequenceName = "customer_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "customer_sequence"
-    )
-
-    @Column(
-            name = "customer_id",
-            updatable = false
-    )
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "customer_id")
     private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "poster_id")
+    private Ticket ticketCustomer;
 
     @Column(
             name = "first_name",
@@ -45,6 +37,13 @@ public class Customer {
     private String lastName;
 
     @Column(
+            name = "nick_name",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
+    private String nickName;
+
+    @Column(
             name = "email",
             nullable = false,
             columnDefinition = "TEXT",
@@ -52,27 +51,45 @@ public class Customer {
     )
     private String email;
 
+    @Column(
+            name = "phone",
+            nullable = false,
+            columnDefinition = "TEXT",
+            unique = true
+    )
+    private String phone;
+
+    @Column(
+            name = "gender",
+            columnDefinition = "TEXT")
+    private String gender;
+
+    @Column(
+            name = "credit_card",
+            columnDefinition = "TEXT",
+            unique = true
+    )
+    private String creditCard;
+
     @Column(name = "age")
     private Integer age;
 
     public Customer() {
     }
 
-    public Customer(Long id, String firstName,
-                    String lastName, String email, Integer age) {
-        this.id = id;
+    public Customer(Ticket ticketCustomer, String firstName,
+                    String lastName, String nickName,
+                    String email, String phone,
+                    String gender, String creditCard,
+                    Integer age) {
+        this.ticketCustomer = ticketCustomer;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.nickName = nickName;
         this.email = email;
-        this.age = age;
-    }
-
-    public Customer(String firstName, String lastName,
-                    String email, Integer age) {
-
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
+        this.phone = phone;
+        this.gender = gender;
+        this.creditCard = creditCard;
         this.age = age;
     }
 
@@ -100,12 +117,44 @@ public class Customer {
         this.lastName = lastName;
     }
 
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
+
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getCreditCard() {
+        return creditCard;
+    }
+
+    public void setCreditCard(String creditCard) {
+        this.creditCard = creditCard;
     }
 
     public Integer getAge() {
@@ -116,13 +165,26 @@ public class Customer {
         this.age = age;
     }
 
+    public Ticket getTicketCustomer() {
+        return ticketCustomer;
+    }
+
+    public void setTicketCustomer(Ticket ticketCustomer) {
+        this.ticketCustomer = ticketCustomer;
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
                 "id=" + id +
+                ", ticketCustomer=" + ticketCustomer +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", nickName='" + nickName + '\'' +
                 ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", gender='" + gender + '\'' +
+                ", creditCard='" + creditCard + '\'' +
                 ", age=" + age +
                 '}';
     }

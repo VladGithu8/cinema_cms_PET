@@ -1,4 +1,4 @@
-package com.pet.project.cinemacms.Models;
+package com.pet.project.cinemacms.Models.AboutCinema;
 
 
 import javax.persistence.*;
@@ -13,7 +13,8 @@ public class KidsGameRoom {
     private int id;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private AboutCinema aboutCinemaId;
+    @JoinColumn(name = "about_c_id")
+    private AboutCinema aboutCinemaKidsRoom;
 
     @Column (name="kids_room_description")
     private String descriptor;
@@ -22,16 +23,16 @@ public class KidsGameRoom {
     }
 
     public KidsGameRoom(AboutCinema aboutCinema, String descriptor) {
-        this.aboutCinemaId = aboutCinema;
+        this.aboutCinemaKidsRoom = aboutCinema;
         this.descriptor = descriptor;
     }
 
-    public AboutCinema getAboutCinemaId() {
-        return aboutCinemaId;
+    public AboutCinema getAboutCinemaKidsRoom() {
+        return aboutCinemaKidsRoom;
     }
 
-    public void setAboutCinemaId(AboutCinema aboutCinemaId) {
-        this.aboutCinemaId = aboutCinemaId;
+    public void setAboutCinemaKidsRoom(AboutCinema aboutCinemaId) {
+        this.aboutCinemaKidsRoom = aboutCinemaId;
     }
 
     public int getId() {
@@ -54,7 +55,7 @@ public class KidsGameRoom {
     public String toString() {
         return "KidsGameRoom{" +
                 "id=" + id +
-                ", aboutCinemaId=" + aboutCinemaId +
+                ", aboutCinemaId=" + aboutCinemaKidsRoom +
                 ", descriptor='" + descriptor + '\'' +
                 '}';
     }

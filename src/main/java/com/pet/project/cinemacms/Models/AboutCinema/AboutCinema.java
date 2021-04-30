@@ -1,4 +1,6 @@
-package com.pet.project.cinemacms.Models;
+package com.pet.project.cinemacms.Models.AboutCinema;
+
+import com.pet.project.cinemacms.Models.Cinema;
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,7 +21,14 @@ public class AboutCinema {
     @Column (name="cinema_name")
     private String name;
 
-    @OneToMany(mappedBy = "aboutCinemaId",
+    @OneToMany(mappedBy = "aboutCinemaHall",
+            targetEntity = CinemaHall.class,
+            fetch = FetchType.LAZY,
+            cascade = javax.persistence.CascadeType.ALL)
+    @Column(name = "cinema_hall")
+    private List<CinemaHall> cinemaHallList;
+
+    @OneToMany(mappedBy = "aboutCinemaKidsRoom",
             targetEntity = KidsGameRoom.class,
             fetch = FetchType.LAZY,
             cascade = javax.persistence.CascadeType.ALL)
@@ -65,18 +74,16 @@ public class AboutCinema {
     public AboutCinema() {
     }
 
-    public AboutCinema(String name, Cinema cinema,
-                       List<KidsGameRoom> kidsGameRoomList,
-                       List<Advertising> advertisings,
-                       List<News> news,
-                       List<CafeBar> cafeBars, List<MobileApp> mobileApps,
+    public AboutCinema(Cinema cinema, String name, List<CinemaHall> cinemaHallList,
+                       List<KidsGameRoom> kidsGameRoomList, List<Advertising> advertisings,
+                       List<News> news, List<CafeBar> cafeBars, List<MobileApp> mobileApps,
                        List<Contact> contacts) {
-
         this.cinema = cinema;
         this.name = name;
-        this.news = news;
+        this.cinemaHallList = cinemaHallList;
         this.kidsGameRoomList = kidsGameRoomList;
         this.advertisings = advertisings;
+        this.news = news;
         this.cafeBars = cafeBars;
         this.mobileApps = mobileApps;
         this.contacts = contacts;
@@ -154,12 +161,21 @@ public class AboutCinema {
         this.contacts = contacts;
     }
 
+    public List<CinemaHall> getCinemaHallList() {
+        return cinemaHallList;
+    }
+
+    public void setCinemaHallList(List<CinemaHall> cinemaHallList) {
+        this.cinemaHallList = cinemaHallList;
+    }
+
     @Override
     public String toString() {
         return "AboutCinema{" +
                 "id=" + id +
                 ", cinema=" + cinema +
                 ", name='" + name + '\'' +
+                ", cinemaHallList=" + cinemaHallList +
                 ", kidsGameRoomList=" + kidsGameRoomList +
                 ", advertisings=" + advertisings +
                 ", news=" + news +

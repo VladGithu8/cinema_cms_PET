@@ -5,9 +5,7 @@ import com.pet.project.cinemacms.Service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class CustomerController {
@@ -31,9 +29,25 @@ public class CustomerController {
     @PostMapping("/saveCustomer")
     public String saveCustomer(@ModelAttribute("customer") Customer customer){
         customerService.saveCustomer(customer);
-        return "redirect:/";
+        return "redirect:/" ;
+    }
+
+    @GetMapping("/showUpdateForm/{id}")
+    public String showUpdateForm(@PathVariable (value = "id") Long id, Model model){
+        Customer customer = customerService.getCustomerByID(id);
+
+        model.addAttribute("customer", customer);
+        return "update_customer" ;
+    }
+
+    @GetMapping("/deleteCustomer/{id}")
+    public String deleteCustomer(@PathVariable (value = "id") Long id){
+
+        this.customerService.deleteCustomerById(id);
+        return "redirect:/" ;
 
     }
+
 }
 
 

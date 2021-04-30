@@ -1,4 +1,4 @@
-package com.pet.project.cinemacms.Models;
+package com.pet.project.cinemacms.Models.AboutCinema;
 
 
 import javax.persistence.*;
@@ -13,6 +13,7 @@ public class MobileApp {
     private int id;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "about_c_id")
     private AboutCinema aboutCinemaApp;
 
     @Column (name="app_name")

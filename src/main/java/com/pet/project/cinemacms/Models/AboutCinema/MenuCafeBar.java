@@ -1,4 +1,4 @@
-package com.pet.project.cinemacms.Models;
+package com.pet.project.cinemacms.Models.AboutCinema;
 
 
 import javax.persistence.*;
@@ -13,6 +13,7 @@ public class MenuCafeBar {
     private int id;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "cafe_bar_id")
     private CafeBar cafeBar;
 
     @Column (name="drinks")

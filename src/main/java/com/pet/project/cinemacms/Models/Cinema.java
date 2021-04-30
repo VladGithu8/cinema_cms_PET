@@ -1,5 +1,7 @@
 package com.pet.project.cinemacms.Models;
 
+import com.pet.project.cinemacms.Models.AboutCinema.AboutCinema;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -19,6 +21,10 @@ public class Cinema {
     @Column(name = "cinema_id")
     private List<AboutCinema> aboutCinemas;
 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "cinema_session_id")
+    private CinemaSession cinemaSession;
+
     @Column(name = "it_works")
     private boolean works;
 
@@ -26,9 +32,18 @@ public class Cinema {
 
     }
 
-    public Cinema(List<AboutCinema> aboutCinemas, boolean works) {
+    public Cinema(List<AboutCinema> aboutCinemas, CinemaSession cinemaSession, boolean works) {
         this.aboutCinemas = aboutCinemas;
+        this.cinemaSession = cinemaSession;
         this.works = works;
+    }
+
+    public CinemaSession getCinemaSession() {
+        return cinemaSession;
+    }
+
+    public void setCinemaSession(CinemaSession cinemaSession) {
+        this.cinemaSession = cinemaSession;
     }
 
     public int getId() {
@@ -60,6 +75,7 @@ public class Cinema {
         return "Cinema{" +
                 "id=" + id +
                 ", aboutCinemas=" + aboutCinemas +
+                ", cinemaSession=" + cinemaSession +
                 ", works=" + works +
                 '}';
     }
