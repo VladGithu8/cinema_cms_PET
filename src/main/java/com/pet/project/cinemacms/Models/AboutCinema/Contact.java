@@ -54,11 +54,11 @@ public class Contact {
         this.cinemaPhones = cinemaPhones;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

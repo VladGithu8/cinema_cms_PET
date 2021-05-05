@@ -16,6 +16,10 @@ public class TicketPrice {
     @JoinColumn(name = "seat_id")
     private Seat seatTicketPrice;
 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "ticket")
+    private Ticket ticket;
+
     @Column(name = "price")
     private Double ticketPrice;
 
@@ -30,8 +34,9 @@ public class TicketPrice {
     public TicketPrice() {
     }
 
-    public TicketPrice(Seat seatTicketPrice, Double ticketPrice, List<CinemaSession> cinemaSessionList) {
+    public TicketPrice(Seat seatTicketPrice, Ticket ticket, Double ticketPrice, List<CinemaSession> cinemaSessionList) {
         this.seatTicketPrice = seatTicketPrice;
+        this.ticket = ticket;
         this.ticketPrice = ticketPrice;
         this.cinemaSessionList = cinemaSessionList;
     }
@@ -68,11 +73,20 @@ public class TicketPrice {
         this.cinemaSessionList = cinemaSessionList;
     }
 
+    public Ticket getTicket() {
+        return ticket;
+    }
+
+    public void setTicket(Ticket ticket) {
+        this.ticket = ticket;
+    }
+
     @Override
     public String toString() {
         return "TicketPrice{" +
                 "id=" + id +
                 ", seatTicketPrice=" + seatTicketPrice +
+                ", ticket=" + ticket +
                 ", ticketPrice=" + ticketPrice +
                 ", cinemaSessionList=" + cinemaSessionList +
                 '}';

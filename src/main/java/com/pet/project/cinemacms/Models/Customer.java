@@ -19,7 +19,7 @@ public class Customer {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "poster_id")
+    @JoinColumn(name = "ticket_id")
     private Ticket ticketCustomer;
 
     @Column(
@@ -38,14 +38,14 @@ public class Customer {
 
     @Column(
             name = "nick_name",
-            nullable = false,
+            nullable = true,
             columnDefinition = "TEXT"
     )
     private String nickName;
 
     @Column(
             name = "email",
-            nullable = false,
+            nullable = true,
             columnDefinition = "TEXT",
             unique = true
     )
@@ -75,6 +75,14 @@ public class Customer {
     private Integer age;
 
     public Customer() {
+    }
+
+    public Customer(String firstName, String lastName, String email, String phone) {
+
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
     }
 
     public Customer(Ticket ticketCustomer, String firstName,

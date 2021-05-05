@@ -26,7 +26,7 @@ public class Ticket {
     @Column(name = "cinema_session_id")
     private List<CinemaSession> sessionList;
 
-    @OneToMany(mappedBy = "ticketPrice",
+    @OneToMany(mappedBy = "ticket",
             targetEntity = TicketPrice.class,
             fetch = FetchType.LAZY,
             cascade = javax.persistence.CascadeType.ALL)
